@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>js/jquery宽高理解应用</title>
+	<style type="text/css">
+		#mdiv{width: 400px;height: 100px;overflow-y:scroll;padding: 20px;margin: 100px;background: #87d784;border:20px solid #888; overflow-y: scroll;}
+	</style>
+</head>
+<body>
+	<div class="item1">
+		<h1>一、window和document的区别是什么</h1>
+		<p>
+			1.Window对象表示浏览器中打开的<sapn>窗口</sapn><br>
+			2.Window对象可以省略！<span>可省略</span>alert();widow.alert()
+		</p>
+		<p>
+			1.Document对象是Window对象的一部分：document.body;window.document.body<br>
+			2.浏览器的HTML文档成为Document对象
+		</p>
+		<h2>二、window.location 和 document.location</h2>
+		<p>window.location===document.location</p>
+	</div>
+	<div class="item2">
+		<h3>window.innerHeight和window.outHeight</h3>
+	</div>
+	<div class="item3">
+		<h2>document.body的scrollWidth和scrollHeight</h2>
+		<p>
+			一、给定宽高小于浏览器窗口<br>
+			scrollWidth通常是浏览器窗口的宽度
+			scrollHeight通常是浏览器窗口的高度
+		</p>
+		<p>
+			二、给定宽高大于浏览器窗口，且内容小于给定宽高<br>
+			scrollWidth给定的宽度+其所有的padding、margin和border<br>
+			scrollHeight给定的高度+其所有的padding、margin和border
+		</p>
+		<p>
+			三、给定宽高浏览器窗口，且内容大于给定宽高<br>
+			scrollWidth内容宽度+其所有的padding、margin和border<br>
+			scrollHeight内容高度+其所有的padding、margin和border
+		</p>
+		<h2>在某div中scrollWidth和scrollHeight</h2>
+		<p>
+			无滚动轴时：<br>
+			scrollWidth==clientWidth=style.width+style.padding*2
+		</p>
+		<p>
+			有滚动轴时：<br>
+			scrollWidth==是实际内容的宽度+padding*2<br>
+			scrollHeight==是实际内容的高度+padding*2
+		</p>
+		<h2>这对属性是可读写的，指的是当元素其中的内容超出其宽高的时候，元素被卷起的高度和宽度</h2>
+	</div>
+	<div id="mdiv">
+		<h1>一、window和document的区别是什么</h1>
+		<p>
+			1.Window对象表示浏览器中打开的<sapn>窗口</sapn><br>
+			2.Window对象可以省略！<span>可省略</span>alert();widow.alert()
+		</p>
+		<p>
+			1.Document对象是Window对象的一部分：document.body;window.document.body<br>
+			2.浏览器的HTML文档成为Document对象
+		</p>
+		<h2>二、window.location 和 document.location</h2>
+		<p>window.location===document.location</p>
+		<p>
+			1.Window对象表示浏览器中打开的<sapn>窗口</sapn><br>
+			2.Window对象可以省略！<span>可省略</span>alert();widow.alert()
+		</p>
+		<p>
+			1.Document对象是Window对象的一部分：document.body;window.document.body<br>
+			2.浏览器的HTML文档成为Document对象
+		</p>
+		<h2>二、window.location 和 document.location</h2>
+		<p>window.location===document.location</p>
+	</div>
+	
+	<script type="text/javascript">
+		var divscroll = document.getElementById('mdiv');
+		function divScroll(){
+			var wholeHeight = divscroll.scrollHeight;
+			var scrollTop = divscroll.scrollTop;
+			var divHeight = divscroll.clientHeight;
+			if (scrollTop+divHeight >= wholeHeight) {
+				alert('我已经滚动到底部')
+			}
+			if (scrollTop==0) {
+				
+				alert('我已经到顶部了')
+			}
+		}
+		divscroll.onscroll=divScroll
+	</script>
+</body>
+</html>
